@@ -15,6 +15,10 @@ WebDrivers = ChromeDriver | FirefoxDriver
 def chrome_driver() -> Generator[WebDrivers, None, None]:
     options = Options()
     # options.add_argument("--headless=new")
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-dev-shm-usage")
     service = Service(executable_path=settings.path_chrome_driver)
     driver = webdriver.Chrome(service=service, options=options)
     yield driver
