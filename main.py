@@ -38,7 +38,7 @@ def merge_song(_session: Session, song: Song) -> Song:
     :return: Song
     """
     logger.info(f"Inserting/update song {song}")
-    song_query = _session.query(Song).filter_by(raw_song=song.raw_song).first()
+    song_query = _session.query(Song).filter_by(raw_song=song.raw_song, radio_id=song.radio_id).first()
     if song_query:
         song_query.date_stream_played = song.date_stream_played
     else:
@@ -62,7 +62,7 @@ def main() -> None:
         with chrome_driver() as cd:
             open_browser_tabs(cd, result)
             search = True
-            refresh_time = datetime.now() + timedelta(hours=1)
+            refresh_time = datetime.now()
             while search:
                 for idx, tab in enumerate(cd.window_handles):
                     try:
@@ -76,9 +76,11 @@ def main() -> None:
 
                     if refresh_time < datetime.now():
                         logger.debug(f"Refresh time passed {refresh_time}, reloading radio page {result[idx].url}")
-                        refresh_time = datetime.now() + timedelta(hours=1)
                         radio.page_reload()
-                    logger.info(f"refresh_time is greater than datetime.now() ({refresh_time} < {datetime.now()})")
+                        logger.info(f"refresh_time is greater than datetime.now() ({refresh_time} < {datetime.now()})")
+                if refresh_time < datetime.now():
+                    refresh_time = datetime.now() + timedelta(hours=1)
+                    logger.info(f"Refresh time changed to {refresh_time}")
                 time.sleep(150)
 
 
