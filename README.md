@@ -1,2 +1,2 @@
 # pyArtRadio
-Python scrapper for ArtRadio app
+Python scraper for ArtRadio app
