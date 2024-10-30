@@ -13,11 +13,11 @@ ArtRadio it's an ad-free online radio player.
 
 ## Features
 
-- **Stream Radio Stations**: Access multiple stations for uninterrupted listening.
-- **Track History**: See a list of recently played songs from each station's playlist.
-- **Song Replays**: Replay songs through YouTube using the embedded player, without any ads.
-- **Responsive Design**: Works smoothly on both desktop and mobile.
-
+- **Automated Song Scraping**: Uses Selenium to access radio websites and capture currently playing song details.
+- **Database Storage**: Saves song information in a database for easy tracking and future analysis.
+- **Request Management**: Manages requests efficiently by patiently waiting on the website for updates without overloading the radio station.
+- **Clever Auto-Refresh**: Refreshes the browser tab intelligently with Selenium to handle situations where the station stops updating songs.
+- **Data Validation**: Utilizes Pydantic to ensure accurate and consistent data handling before adding entries to the database.
 
 ## Technologies Used
 
