@@ -1,4 +1,3 @@
-
 # pyArtRadio 2.0 - Python automation script
 
 This is the automation script for a newer version of ArtRadio (for first version you can check [djangoArtRadio V1](https://github.com/devraider/djangoArtRadio-v1.0.0)).
@@ -58,4 +57,3 @@ ArtRadio it's an ad-free online radio player.
    ```bash
     python main.py
    ```
-
